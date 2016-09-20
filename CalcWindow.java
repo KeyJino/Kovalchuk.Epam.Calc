@@ -52,10 +52,10 @@ public class CalcWindow extends JFrame {
         frame.setResizable(false);
 
         AbstractDocument doc = (AbstractDocument) calcField.getDocument();
-        doc.setDocumentFilter(new LengthFilter(doc.getLength(), 20));
+        doc.setDocumentFilter(new LengthFilter(doc.getLength(), 20)); //длина строки
     }
 
-    public void creatingButtons() {
+    public void creatingButtons() { //описание кнопок
 
         calcField.setFont(jTextFieldFont);
         calcField.setBackground(Color.DARK_GRAY);
@@ -205,7 +205,7 @@ public class CalcWindow extends JFrame {
         reciproc.setPreferredSize(new Dimension(40, 30));
     }
 
-    public void addButtons() {
+    public void addButtons() { //добавление их на форму
         frame.add(calcField, new GridBagConstraints(0, 0, 0, 0, 0, 0,
                 GridBagConstraints.NORTHWEST, GridBagConstraints.NONE,
                 new Insets(5, 10, 10, 0), 0, 0));
@@ -278,7 +278,7 @@ public class CalcWindow extends JFrame {
 
     }
 
-    public void addActionForButtons() {
+    public void addActionForButtons() { //приписывание каждой кнопке соответствующего события 
 
         one.addActionListener(new ActionListener() {
             @Override
@@ -341,13 +341,13 @@ public class CalcWindow extends JFrame {
             }
         });
 
-        calcField.addKeyListener(new KeyListener() {
+        calcField.addKeyListener(new KeyListener() { 
             @Override
             public void keyTyped(KeyEvent e) {
             }
 
             @Override
-            public void keyPressed(KeyEvent e)  {
+            public void keyPressed(KeyEvent e)  { //слушатель кнопок клавиатуры при нажатие
                 try {
                     calcField.setText(calcField.getText());
                     firstTemp = Integer.valueOf(calcField.getText());
@@ -384,7 +384,7 @@ public class CalcWindow extends JFrame {
             }
 
             @Override
-            public void keyReleased(KeyEvent e) {
+            public void keyReleased(KeyEvent e) { //слушатель кнопоки когда она отжалась
 
                 if (e.getKeyChar() == '=') {
                     String temp = calcField.getText();
@@ -581,7 +581,7 @@ public class CalcWindow extends JFrame {
             }
         });
 
-        calcField.addKeyListener(new KeyAdapter() {
+        calcField.addKeyListener(new KeyAdapter() { //проверка на ввод только цифр
             @Override
             public void keyReleased(KeyEvent e) {
                 calcField.setText(inputDigitsOnly(calcField.getText()));
@@ -589,7 +589,7 @@ public class CalcWindow extends JFrame {
         });
     }
 
-    public String inputDigitsOnly(String tmp){
+    public String inputDigitsOnly(String tmp){ //проверка цифр
         int lost = tmp.length();
         String result = "";
         boolean onlyOne = false;
